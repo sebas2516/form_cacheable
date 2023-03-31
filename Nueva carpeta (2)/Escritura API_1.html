@@ -1,0 +1,31 @@
+<script type="text/javascript" >
+var userName = "wsuser";
+var passWord = "xe0kVX";
+function authenticateUser(user, password)
+{
+    var auth = user + ":" + password;    
+    var hash = btoa(auth); 
+    return "Basic " + hash;
+}
+function CallWebAPI() {    
+  var request = new XMLHttpRequest();
+	var autenticate = authenticateUser(userName, passWord);
+	var placa = ""
+  var respuesta = "";
+  var data = "[543212345|2023-02-08 11: 57: 00|2023-02-08 11: 57: 00|4.44448|-74.44449|100|180|60|11|0|0|0|0|0|8|0|25459220|14523|2500|6|225|80|24870|12875|3874|13100|960|22548000|90|21500|15|16]";
+  var dataURL = encodeURIComponent(data);
+  console.log(dataURL);
+    request.open("post", "https://gps.coltrack.com/gps/rep?ver=1&data="+dataURL, false);	
+    request.setRequestHeader("Authorization", authenticateUser(userName, passWord));  	
+    request.send();   
+  console.log(request.responseText);    
+	
+}
+</script>
+<div>
+  <input type="button" class="btn btn-primary" value="Call Web API" onclick="javascript:CallWebAPI();" />
+</div>
+
+
+
+
