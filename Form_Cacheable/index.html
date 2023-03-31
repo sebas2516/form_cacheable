@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <link rel="manifest" href="manifest.json">
+    <meta name = "description" content = "Formulario-1">
+    <meta name = "theme-color" content="#142137">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/IMG/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    Mi IP es: <p id="ipId"></p>
+    <div class="registration-form">
+        <form>
+            <div class="form-icon">
+                <span><img src="IMG/favicon-32x32.png" alt=""></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="id" placeholder="#Identificación">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="name" placeholder="Nombres">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="lastName" placeholder="Apellidos">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="email" placeholder="Correo">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control item" id="password" placeholder="Contraseña">
+            </div>
+            <p>Firma:</p>
+            <main class="main-container">
+                <canvas id="main-canvas" width="450" height="100"></canvas>
+            </main>
+            <input type="button" value="Salvar" onclick="img()">
+            <div class="form-group">
+                <input type="button" value="Guardar" onclick="getValueInput()" class="submit">
+                <!-- <input value="Enviar" onclick="guardar()" class="submit"> -->
+            </div>
+            <div id="firma"></div>
+        </div>
+        </form>
+        <a href="#" class="btn btn-success" onclick="guardar()">Enviar</a>        
+        <div id="firma"></div>
+    </div>
+    <!-- Importacion Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- <script type="text/javascript" src="https://api.ipify.org/?format=jsonp&callback=get_ip"></script> -->
+    <script src="JS/script.js"></script>
+    <script src="JS/configuracion.js"></script>
+    <script src="JS/guardar.js"></script>
+
+    <script>
+        if('ServiceWorker' in navigator){
+            window.addEventListener('load', ()=>{
+                navigator.serviceWorker.register('JS/service_worker.js').then((reg)=>{
+                    console.log("Service worker registered", reg);
+                })
+            })
+        }
+    </script>
+</body>
+</html>
